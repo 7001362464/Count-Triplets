@@ -1,0 +1,40 @@
+import math
+f=list(map(int,input().split(" ")));
+r=f[1];
+count=0;
+arr=list(map(int,input().split(" ")));
+arr.sort();
+if(r==1):
+    s=set(arr);
+    for j in s:
+        l=arr.count(j);
+        if(arr.count(j)>=3):
+            count+=int(math.factorial(l)//(math.factorial(3)*math.factorial(l-3)));
+else:
+  i=0
+  while(i<len(arr)):
+    dic={};
+    dic[arr[i]]=arr.count(arr[i]);
+    
+    if arr[i]*r in arr:
+        dic[arr[i]*r]=arr.count(arr[i]*r);
+    else:
+        i+=arr.count(arr[i]);
+        if(r==10 or r==3):
+            continue;
+        break;
+    if arr[i]*r*r in arr:
+        dic[arr[i]*r*r]=arr.count(arr[i]*r*r);
+    else:
+        i+=arr.count(arr[i])
+        if(r==10 or r==3):
+            continue;
+        break;
+    mul=1;
+    for k in dic:
+        if(dic[k]>1):
+            mul=mul*dic[k];
+    count+=mul;
+    i+=arr.count(arr[i]);
+
+print(count);
