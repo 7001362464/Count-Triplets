@@ -1,0 +1,54 @@
+class link:
+    value=0;
+    next1=0
+    next2=0
+def drive(str):
+    
+ check1=['{','[','(']
+ check2=['}',']',')']
+ s=link();
+ p=s
+ def push(p,value):
+    p.next1=link();
+    p.next1.next2=p;
+    p=p.next1;
+    p.value=value;
+    return p;
+ def pop(p):
+    v=p.value;
+    p=p.next2;
+    del p.next1;
+    return p,v;
+ for i in str:
+    if(i in check1):
+        p=push(p,i);
+    elif(i in check2):
+        if(p.value!=0):
+        
+            p,x=pop(p);
+            if(ord(i)>50):
+                if(chr(ord(i)-2)==x):
+                    pass;
+                else:
+                    print('NO');
+                    break;
+            elif(ord(i)<50):
+                if(chr(ord(i)-1)==x):
+                    pass;
+                else:
+                    print('NO');
+                    break;
+        else:
+            print("NO")
+            return;
+    else:
+        pass;
+ else:
+    print("YES");
+
+for i in range(int(input())):
+    str=list(input());
+    drive(str);
+                
+    
+        
