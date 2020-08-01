@@ -1,0 +1,26 @@
+i=int(input());
+l=[]
+d=[];
+su=0;
+for k in range(i):
+    t=int(input());
+    if(t==0):
+        d.append(l);
+        l=[];
+    else:
+        l.append(t);
+if(t is not 0):
+    d.append(l);
+if([] in d):
+     d.remove([]);
+final=0;
+for k in d:
+    f=0;
+    for ns in k:
+        f+=ns;
+    if(f%2==0):
+        final+=int(f//2);
+    else:
+        final+=int((f-1)//2);
+
+print(final)
